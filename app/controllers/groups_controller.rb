@@ -12,11 +12,14 @@ class GroupsController < ApplicationController
  end
 
  def create
-      @group = Group.new(group_params)
-         @group.save
+   @group = Group.new(group_params)
 
+   if @group.save
      redirect_to groups_path
-    end
+   else
+     render :new
+   end
+ end
 
  def edit
   @group = Group.find(params[:id])
